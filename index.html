@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kokoro Poetry Video</title>
-<meta name="description" content="Kokoro Poetry Video is an open-source pipeline that turns one public-domain English poem a day into a narrated, subtitled poetry video with AI-assisted planning.">
+<meta name="description" content="Kokoro Poetry Video creates AI-assisted English poetry videos with Kokoro text-to-speech, synchronized subtitles, visual backgrounds, and music. Videos may be published through official platform APIs.">
 <style>
   :root {
     --bg: #faf8f4;
@@ -79,10 +79,11 @@
 <header class="hero">
   <div class="wrap">
     <h1>Kokoro Poetry Video</h1>
-    <p class="lead">An open-source pipeline that turns one English poem a day into a narrated, subtitled poetry video &mdash; planned with AI assistance and published through the official platform APIs.</p>
+    <p class="lead">An open-source pipeline that turns one English poem a day into a narrated, subtitled poetry video &mdash; planned with AI assistance and published through official platform APIs.</p>
     <div class="btns">
       <a class="btn primary" href="https://github.com/ODarJ/kokoro-poetry-video-">View on GitHub</a>
       <a class="btn ghost" href="privacy.html">Privacy Policy</a>
+      <a class="btn ghost" href="terms.html">Terms of Service</a>
     </div>
   </div>
 </header>
@@ -91,19 +92,19 @@
 
   <section>
     <h2>What it does</h2>
-    <p>Each day the project picks the next poem from a simple list, asks an AI model <em>once</em> to prepare everything the video needs, and then builds two versions of the video: a 16:9 video for YouTube and a 9:16 vertical video for short-form platforms.</p>
-    <p>Poems are read aloud with an AI voice. Because the narration is synthetic, the videos say so in their descriptions.</p>
+    <p>Each day the project selects the next poem from a prepared list, asks an AI model once to prepare the materials the video needs, and then builds the video (including a vertical version for short-form platforms).</p>
+    <p>Poems are narrated with Kokoro text-to-speech. Because the narration is synthetic, the videos disclose this in their descriptions.</p>
   </section>
 
   <section>
     <h2>How it works</h2>
     <ol class="steps">
-      <li><strong>Select</strong> &mdash; exactly one pending poem is chosen per calendar day, and the state is remembered so nothing is processed twice.</li>
-      <li><strong>Plan</strong> &mdash; one AI request returns the poem details, narration text, mood, voice choice, a background scene plan, music search keywords and platform-specific titles and descriptions.</li>
-      <li><strong>Gather</strong> &mdash; footage is downloaded from Pexels and a background track is found on Freesound.</li>
+      <li><strong>Select</strong> &mdash; exactly one pending poem is chosen per calendar day. State is stored so the same poem is not processed twice.</li>
+      <li><strong>Plan</strong> &mdash; one AI request returns poem details, narration text, mood, voice choice, background scene plan, music search keywords, and platform-specific titles and descriptions.</li>
+      <li><strong>Gather</strong> &mdash; background footage is obtained from Pexels and a background track is located on Freesound (limited to Creative Commons 0).</li>
       <li><strong>Narrate</strong> &mdash; Kokoro text-to-speech reads the poem line by line.</li>
-      <li><strong>Render</strong> &mdash; FFmpeg combines narration, synchronized subtitles, footage and music (quieter while the voice speaks).</li>
-      <li><strong>Publish</strong> &mdash; the videos are uploaded to the platforms that are switched on, and the result of each upload is recorded.</li>
+      <li><strong>Render</strong> &mdash; FFmpeg combines narration, synchronized subtitles, footage, and music (with music ducked while the voice speaks).</li>
+      <li><strong>Publish</strong> &mdash; when enabled, the video is uploaded through the official APIs of the selected platforms, and the result of each upload is recorded.</li>
     </ol>
   </section>
 
@@ -112,7 +113,7 @@
     <div class="grid">
       <div class="card">
         <h3>Kokoro TTS</h3>
-        <p>Open-weight text-to-speech model used to narrate each poem with a voice that suits its mood.</p>
+        <p>Open-weight text-to-speech model used to narrate each poem with a voice suited to its mood.</p>
       </div>
       <div class="card">
         <h3>Pexels</h3>
@@ -131,27 +132,27 @@
 
   <section>
     <h2>Publishing</h2>
-    <p>Publishing uses each platform's official API with OAuth. Credentials are stored as GitHub Actions Secrets and are never written into the code, the logs or the generated files.</p>
+    <p>Publishing uses each platform’s official API with OAuth (or equivalent). Credentials are stored as GitHub Actions Secrets and are never written into the code, the logs, or the generated files.</p>
     <div class="grid">
       <div class="card">
         <h3>YouTube</h3>
-        <p>Uses the YouTube Data API v3 with the upload permission only. Videos are uploaded as <em>private</em> unless the owner changes the setting.</p>
+        <p>Uses the YouTube Data API v3 with the upload permission only. Videos are uploaded as private unless the owner changes the setting.</p>
       </div>
       <div class="card">
         <h3>Facebook</h3>
-        <p>Posts the vertical video as a Reel to a Facebook Page through the Meta Graph API.</p>
+        <p>Posts the vertical video as a Reel to a Facebook Page through the Meta Graph API when that platform is enabled.</p>
       </div>
       <div class="card">
         <h3>TikTok</h3>
-        <p>Uses the TikTok Content Posting API. Apps that have not passed TikTok's audit can only post privately, and the project reports exactly what the API returns.</p>
+        <p>Uses the TikTok Content Posting API. The project posts only to the authorizing owner’s account and reports exactly what the API returns. Apps that have not completed TikTok’s audit may be limited to private or restricted visibility.</p>
       </div>
     </div>
-    <p class="note" style="margin-top:16px">Every platform can be switched on or off independently, and one platform failing never blocks the others.</p>
+    <p class="note" style="margin-top:16px">Every platform can be switched on or off independently. Failure on one platform does not block the others.</p>
   </section>
 
   <section>
     <h2>Poems and rights</h2>
-    <p>The project is meant for poems that are in the public domain or otherwise legally available. It does not invent poem text: if a poem cannot be retrieved reliably, nothing is published.</p>
+    <p>The project is intended for poems that are in the public domain or otherwise legally available for the intended use. It does not invent poem text. If a poem cannot be retrieved reliably, nothing is published for that entry.</p>
   </section>
 
 </main>
@@ -160,6 +161,7 @@
   <div class="wrap">
     <a href="https://github.com/ODarJ/kokoro-poetry-video-">GitHub repository</a>
     <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
     <a href="https://github.com/ODarJ/kokoro-poetry-video-/issues">Report an issue</a>
     <p>Footage from <a href="https://www.pexels.com">Pexels</a>. Music from <a href="https://freesound.org">Freesound</a> (CC0).</p>
   </div>
